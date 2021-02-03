@@ -11,7 +11,7 @@ APP_ROOT=${APP_ROOT:-/opt/app-root/src}
 
 /usr/libexec/s2i/assemble
 
-# Remove the cached package dependencies files generated from s2i assemble script. 
+# Remove the cached package dependencies files generated from s2i assemble script.
 rm -rf /tmp/Pipfile.lock
 rm -rf /tmp/requirements.txt
 
@@ -21,11 +21,10 @@ rm -rf /tmp/requirements.txt
 
 # Install pipenv for jupyter-nbrequirements to use
 # TODO: This should be removed once nbrequirements can use Thoth + micropipenv only
-pip install pipenv==2018.11.26
+# pip install pipenv==2018.11.26
 
 # Install mod_wsgi for use in optional webdav support.
-
-pip install 'mod_wsgi==4.6.8'
+# pip install 'mod_wsgi==4.6.8'
 
 # Install base packages needed for running Jupyter Notebooks.
 
