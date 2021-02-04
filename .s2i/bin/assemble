@@ -110,7 +110,7 @@ EOF
 
 jupyter contrib nbextension install --sys-prefix
 
-jupyter nbextension install --sys-prefix https://raw.githubusercontent.com/vpavlin/jupyter-publish-extension/master/publish.js
+jupyter nbextension install --sys-prefix publish.js
 jupyter nbextension enable  --sys-prefix publish
 
 # Enable the extensions configurator
