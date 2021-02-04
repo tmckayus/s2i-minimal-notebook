@@ -80,6 +80,7 @@ cd /opt/app-root/gateway
 
 npm version
 npm config set strict-ssl=false
+npm config list --json
 npm install --production
 
 # Create additional directories.
