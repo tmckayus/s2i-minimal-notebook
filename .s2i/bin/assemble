@@ -76,8 +76,9 @@ ln -s /opt/app-root/bin/oc-wrapper.sh /opt/app-root/bin/oc
 echo "source /opt/app-root/etc/generate_container_user" >> /opt/app-root/etc/scl_enable
 
 # Install packages required by the proxy process.
-
-(cd /opt/app-root/gateway && npm install --production)
+cd /opt/app-root/gateway
+npm config set strict-ssl=false
+npm install --production
 
 # Create additional directories.
 
@@ -107,7 +108,7 @@ jupyter nbextension enable  --sys-prefix publish
 
 # Enable the extensions configurator
 
-pip install -U jupyter_nbextensions_configurator
+# pip install -U jupyter_nbextensions_configurator
 
 jupyter nbextensions_configurator enable --sys-prefix
 
