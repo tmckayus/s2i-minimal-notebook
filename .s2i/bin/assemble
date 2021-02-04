@@ -6,7 +6,6 @@ set -eo pipefail
 
 APP_ROOT=${APP_ROOT:-/opt/app-root/src}
 
-echo $APP_ROOT
 
 # Run the original Python S2I assemble script to install packages.
 
@@ -56,9 +55,9 @@ mv ${APP_ROOT}/src/supervisor /opt/app-root/etc/supervisor
 
 mv ${APP_ROOT}/src/gateway /opt/app-root/gateway
 
-mv ${APP_ROOT}/src/*.sh /opt/app-root/bin
+mv ${APP_ROOT}/src/jupyter-publish-extension /opt/app-root/jupyter-publish-extension
 
-ls ${APP_ROOT}/src
+mv ${APP_ROOT}/src/*.sh /opt/app-root/bin
 
 # Install oc command line client for OpenShift cluster.
 
@@ -80,11 +79,6 @@ echo "source /opt/app-root/etc/generate_container_user" >> /opt/app-root/etc/scl
 
 # Install packages required by the proxy process.
 cd /opt/app-root/gateway
-
-npm version
-npm config set strict-ssl=false
-npm config list --json
-cat .npmrc
 npm install --production
 
 # Create additional directories.
@@ -110,7 +104,7 @@ EOF
 
 jupyter contrib nbextension install --sys-prefix
 
-jupyter nbextension install --sys-prefix publish.js
+jupyter nbextension install --sys-prefix /opt/app-root/jupyter-publish-extension/publish.js
 jupyter nbextension enable  --sys-prefix publish
 
 # Enable the extensions configurator
