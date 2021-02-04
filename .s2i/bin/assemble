@@ -6,6 +6,7 @@ set -eo pipefail
 
 APP_ROOT=${APP_ROOT:-/opt/app-root/src}
 
+echo $APP_ROOT
 
 # Run the original Python S2I assemble script to install packages.
 
@@ -56,6 +57,8 @@ mv ${APP_ROOT}/src/supervisor /opt/app-root/etc/supervisor
 mv ${APP_ROOT}/src/gateway /opt/app-root/gateway
 
 mv ${APP_ROOT}/src/*.sh /opt/app-root/bin
+
+ls ${APP_ROOT}/src
 
 # Install oc command line client for OpenShift cluster.
 
