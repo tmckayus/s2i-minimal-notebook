@@ -59,20 +59,6 @@ mv ${APP_ROOT}/src/jupyter-publish-extension /opt/app-root/jupyter-publish-exten
 
 mv ${APP_ROOT}/src/*.sh /opt/app-root/bin
 
-# Install oc command line client for OpenShift cluster.
-
-curl -s -o ${APP_ROOT}/oc.tar.gz https://mirror.openshift.com/pub/openshift-v3/clients/3.11.153/linux/oc.tar.gz && \
-    tar -C /opt/app-root/bin -zxf ${APP_ROOT}/oc.tar.gz oc && \
-    mv /opt/app-root/bin/oc /opt/app-root/bin/oc-3.11 && \
-    rm ${APP_ROOT}/oc.tar.gz
-
-curl -s -o ${APP_ROOT}/oc.tar.gz https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz&& \
-    tar -C /opt/app-root/bin -zxf ${APP_ROOT}/oc.tar.gz oc && \
-    mv /opt/app-root/bin/oc /opt/app-root/bin/oc-4 && \
-    rm ${APP_ROOT}/oc.tar.gz
-
-ln -s /opt/app-root/bin/oc-wrapper.sh /opt/app-root/bin/oc
-
 # Ensure passwd/group file intercept happens for any shell environment.
 
 echo "source /opt/app-root/etc/generate_container_user" >> /opt/app-root/etc/scl_enable
